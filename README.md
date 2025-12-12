@@ -186,10 +186,6 @@ Special thanks to:
   </tbody>
 </table>
 
-## 👥 Collaborators
 
-<a href="https://github.com/sahilatahar/Code-Sync/graphs/contributors">
-   <img src="https://contrib.rocks/image?repo=sahilatahar/Code-Sync" />
-</a>
 
 
