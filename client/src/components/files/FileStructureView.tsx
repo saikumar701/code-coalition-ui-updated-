@@ -169,7 +169,7 @@ function Directory({
     }
 
     return (
-        <div className="overflow-x-auto">
+        <div>
             <div
                 className="flex w-full items-center rounded-md px-2 py-1 hover:bg-darkHover"
                 onClick={() => handleDirClick(item.id)}
@@ -189,7 +189,7 @@ function Directory({
                     />
                 ) : (
                     <p
-                        className="flex-grow cursor-pointer overflow-hidden truncate"
+                        className="flex-grow cursor-pointer overflow-hidden"
                         title={item.name}
                     >
                         {item.name}
@@ -313,7 +313,7 @@ const File = ({
                 />
             ) : (
                 <p
-                    className="flex-grow cursor-pointer overflow-hidden truncate"
+                    className="flex-grow cursor-pointer overflow-hidden"
                     title={item.name}
                 >
                     {item.name}

@@ -149,6 +149,7 @@ function Editor() {
                 fontSize: fontSize + "px",
                 height: viewHeight,
                 position: "relative",
+                backgroundColor: "#1E1E1E", // Dark background for the editor
             }}
         />
     )

@@ -46,7 +46,7 @@ function Sidebar() {
         <aside className="flex w-full md:h-full md:max-h-full md:min-h-full md:w-auto">
             <div
                 className={cn(
-                    "fixed bottom-0 left-0 z-50 flex h-[50px] w-full gap-4 self-end overflow-hidden border-t border-darkHover bg-dark p-2 md:static md:h-full md:w-[50px] md:min-w-[50px] md:flex-col md:border-r md:border-t-0 md:p-2 md:pt-4",
+                    "fixed bottom-0 left-0 z-50 flex h-[50px] w-full gap-4 self-end overflow-hidden border-t border-gray-700 bg-gray-900 p-2 md:static md:h-full md:w-[50px] md:min-w-[50px] md:flex-col md:border-r md:border-t-0 md:p-2 md:pt-4",
                     {
                         hidden: minHeightReached,
                     },
@@ -80,7 +80,7 @@ function Sidebar() {
                 {/* Button to change activity state coding or drawing */}
                 <div className="flex h-fit items-center justify-center">
                     <button
-                        className="justify-cente flex items-center  rounded p-1.5 transition-colors duration-200 ease-in-out hover:bg-[#3D404A]"
+                        className="justify-cente flex items-center  rounded p-1.5 transition-colors duration-200 ease-in-out hover:bg-gray-700"
                         onClick={changeState}
                         onMouseEnter={() => setShowTooltip(true)}
                         data-tooltip-id="activity-state-tooltip"
@@ -111,7 +111,7 @@ function Sidebar() {
                 </div>
             </div>
             <div
-                className="absolute left-0 top-0 z-20 w-full flex-col bg-dark md:static md:min-w-[300px]"
+                className="absolute left-0 top-0 z-20 w-full flex-col bg-gray-900 md:static md:min-w-[300px]"
                 style={isSidebarOpen ? {} : { display: "none" }}
             >
                 {/* Render the active view component */}

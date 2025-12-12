@@ -31,7 +31,6 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"
 
 const SocketProvider = ({ children }: { children: ReactNode }) => {
     const {
-        users,
         setUsers,
         setStatus,
         setCurrentUser,
@@ -79,12 +78,20 @@ const SocketProvider = ({ children }: { children: ReactNode }) => {
         [setCurrentUser, setStatus, setUsers],
     )
 
+    const handleUserJoined = useCallback(
+        ({ user }: { user: RemoteUser }) => {
+            toast.success(`${user.username} joined the room`)
+            setUsers(prevUsers => [...prevUsers, user])
+        },
+        [setUsers],
+    )
+
     const handleUserLeft = useCallback(
         ({ user }: { user: User }) => {
             toast.success(`${user.username} left the room`)
-            setUsers(users.filter((u: User) => u.username !== user.username))
+            setUsers(prevUsers => prevUsers.filter((u: User) => u.username !== user.username))
         },
-        [setUsers, users],
+        [setUsers],
     )
 
     const handleRequestDrawing = useCallback(
@@ -106,6 +113,7 @@ const SocketProvider = ({ children }: { children: ReactNode }) => {
         socket.on("connect_failed", handleError)
         socket.on(SocketEvent.USERNAME_EXISTS, handleUsernameExist)
         socket.on(SocketEvent.JOIN_ACCEPTED, handleJoiningAccept)
+        socket.on(SocketEvent.USER_JOINED, handleUserJoined)
         socket.on(SocketEvent.USER_DISCONNECTED, handleUserLeft)
         socket.on(SocketEvent.REQUEST_DRAWING, handleRequestDrawing)
         socket.on(SocketEvent.SYNC_DRAWING, handleDrawingSync)
@@ -115,6 +123,7 @@ const SocketProvider = ({ children }: { children: ReactNode }) => {
             socket.off("connect_failed")
             socket.off(SocketEvent.USERNAME_EXISTS)
             socket.off(SocketEvent.JOIN_ACCEPTED)
+            socket.off(SocketEvent.USER_JOINED)
             socket.off(SocketEvent.USER_DISCONNECTED)
             socket.off(SocketEvent.REQUEST_DRAWING)
             socket.off(SocketEvent.SYNC_DRAWING)
@@ -123,6 +132,7 @@ const SocketProvider = ({ children }: { children: ReactNode }) => {
         handleDrawingSync,
         handleError,
         handleJoiningAccept,
+        handleUserJoined,
         handleRequestDrawing,
         handleUserLeft,
         handleUsernameExist,

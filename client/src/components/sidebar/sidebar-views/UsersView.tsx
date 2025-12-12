@@ -9,11 +9,13 @@ import { IoShareOutline } from "react-icons/io5"
 import { LuCopy } from "react-icons/lu"
 import { useNavigate } from "react-router-dom"
 
+
 function UsersView() {
     const navigate = useNavigate()
     const { viewHeight } = useResponsive()
     const { setStatus } = useAppContext()
     const { socket } = useSocket()
+
 
     const copyURL = async () => {
         const url = window.location.href
@@ -26,6 +28,7 @@ function UsersView() {
         }
     }
 
+
     const shareURL = async () => {
         const url = window.location.href
         try {
@@ -36,6 +39,7 @@ function UsersView() {
         }
     }
 
+
     const leaveRoom = () => {
         socket.disconnect()
         setStatus(USER_STATUS.DISCONNECTED)
@@ -44,8 +48,9 @@ function UsersView() {
         })
     }
 
+
     return (
-        <div className="flex flex-col p-4" style={{ height: viewHeight }}>
+        <div className="flex flex-col p-4 bg-gray-900 text-white" style={{ height: viewHeight }}>
             <h1 className="view-title">Users</h1>
             {/* List of connected users */}
             <Users />
@@ -80,5 +85,6 @@ function UsersView() {
         </div>
     )
 }
+
 
 export default UsersView

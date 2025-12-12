@@ -66,11 +66,19 @@ const RunCodeContextProvider = ({ children }: { children: ReactNode }) => {
     }, [activeFile?.name, supportedLanguages])
 
     const runCode = async () => {
+        if (!activeFile) {
+            return toast.error("Please open a file to run the code")
+        }
+
+        const extension = activeFile.name.split(".").pop()
+        if (extension === "html") {
+            setOutput(activeFile.content || "")
+            return
+        }
+
         try {
-            if (!selectedLanguage) {
+            if (!selectedLanguage?.language) {
                 return toast.error("Please select a language to run the code")
-            } else if (!activeFile) {
-                return toast.error("Please open a file to run the code")
             } else {
                 toast.loading("Running code...")
             }

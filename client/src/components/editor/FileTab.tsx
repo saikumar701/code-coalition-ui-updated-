@@ -76,8 +76,8 @@ function FileTab() {
                 <span
                     key={file.id}
                     className={cn(
-                        "flex w-fit cursor-pointer items-center rounded-t-md px-2 py-1 text-white",
-                        { "bg-darkHover": file.id === activeFile?.id },
+                        "flex w-fit cursor-pointer items-center rounded-t-md px-2 py-1 text-gray-300",
+                        { "bg-gray-800 text-white": file.id === activeFile?.id },
                     )}
                     onClick={() => changeActiveFile(file.id)}
                 >
@@ -93,7 +93,7 @@ function FileTab() {
                         {file.name}
                     </p>
                     <IoClose
-                        className="ml-3 inline rounded-md hover:bg-darkHover"
+                        className="ml-3 inline rounded-md hover:bg-gray-700"
                         size={20}
                         onClick={() => closeFile(file.id)}
                     />
